@@ -98,8 +98,16 @@
             margin-top: 2.5rem;
         }
 
-        /* Media query para ajustar o tamanho da fonte em telas menores (celulares) */
+        /* Media query para ajustar o tamanho da fonte e o posicionamento em telas menores (celulares) */
         @media (max-width: 600px) {
+            body {
+                /* Aplica um zoom de 25% na imagem de fundo, aumentando seu tamanho para 125% */
+                background-size: 125%;
+            }
+            main {
+                /* Reduz o preenchimento nas laterais para aproximar o texto da borda em telas pequenas */
+                padding: 2rem 1rem;
+            }
             .poema p {
                 font-size: 1.2rem;
             }
@@ -114,23 +122,23 @@
     -->
     <main>
         <div class="poema">
-         <p>
-             Sob o céu de cinza e espera,<br>
-             a cidade se cala em mim.<br>
-             A torre, um traço de ferro,<br>
-             vigia o tempo que há de vir.
+            <p>
+                Sob o céu de cinza e espera,<br>
+                a cidade se cala em mim.<br>
+                A torre, um traço de ferro,<br>
+                vigia o tempo que há de vir.
             </p>
             <p>
-              E na quietude deste espaço,<br>
-              uma semente de luz floresce.<br>
-              O cinza é só um abraço<br>
-              antes que a alma se aquece.
+                E na quietude deste espaço,<br>
+                uma semente de luz floresce.<br>
+                O cinza é só um abraço<br>
+                antes que a alma se aquece.
             </p>
             <p>
-              Um só suspiro, que o ar desfaz,<br>
-              e o mundo inteiro se refaz.<br>
-              Nesta quietude, a força vem<br>
-              para ir à luta, e mais além.
+                Um só suspiro, que o ar desfaz,<br>
+                e o mundo inteiro se refaz.<br>
+                Nesta quietude, a força vem<br>
+                para ir à luta, e mais além.
             </p>
         </div>
     </main>
