@@ -1,141 +1,150 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizador de Imagem Melhorada</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Reflexo em Paris</title>
+    
+    <!-- Importação de fontes do Google Fonts para um estilo elegante -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
     <style>
+        /*
+         * ESTILOS GERAIS E PLANO DE FUNDO
+         * Aqui definimos a base para a experiência imersiva.
+         * O corpo (body) ocupa toda a tela e aplica a imagem de fundo
+         * com uma sobreposição de gradiente para garantir a legibilidade do texto.
+         */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f2f5;
-        }
-        .filter-enhanced {
-            filter: saturate(1.15) contrast(1.05) brightness(1.05);
-        }
-        .image-container {
-            position: relative;
-        }
-        /* Este div desfoca o texto original na imagem */
-        .text-blurrer {
-            position: absolute;
-            top: 15%;
-            left: 48%;
-            width: 50%;
-            height: 70%;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
-        .poem-overlay {
-            position: absolute;
-            color: white;
-            font-size: 1rem;
-            line-height: 1.6;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            white-space: pre-wrap;
+            /* Essencial para o layout de tela cheia */
+            margin: 0;
             
-            /* Posicionamento para Computador (para corresponder ao original) */
-            top: 50%;
-            left: 50%;
-            transform: translateY(-50%);
-            text-align: left;
-            width: 45%;
+            /*
+             * Usar min-height: 100vh (100% da altura da janela de visualização)
+             * é a forma mais eficaz de garantir que o fundo ocupe toda a tela
+             * em todos os dispositivos, especialmente em celulares.
+             */
+            min-height: 100vh;
+            
+            /*
+             * A imagem de fundo é aplicada com um gradiente linear ainda mais sutil.
+             * Isso aumenta o contraste e dá mais destaque à imagem, como solicitado.
+             */
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.25)), 
+                url('WORK.jpg');
+
+            /*
+             * 'cover' é a propriedade chave. Ela garante que a imagem cubra todo o espaço,
+             * redimensionando-a para preencher a tela sem distorcer. Partes da imagem
+             * podem ser cortadas para que ela se ajuste perfeitamente.
+             */
+            background-size: cover;
+            
+            /* 'center' mantém a parte mais importante da imagem sempre visível. */
+            background-position: center center;
+            
+            /* 'fixed' mantém a imagem parada durante a rolagem para um efeito de profundidade. */
+            background-attachment: fixed;
+
+            /* * Usamos Flexbox para centralizar perfeitamente o conteúdo poético
+             * na vertical e na horizontal por padrão (em telas maiores).
+             */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            /* Definição da fonte principal para o poema */
+            font-family: 'EB Garamond', 'Garamond', serif;
         }
 
-        /* Ajustes responsivos para telemóveis (largura máxima: 768px) */
-        @media (max-width: 768px) {
-            .poem-overlay {
-                font-size: 0.8rem;
-                text-align: left;
-                top: 50%;
-                left: 2%; /* Posição próxima à margem esquerda */
-                transform: translate(0, -50%); /* Ajuste do transform para alinhamento à esquerda */
-                width: 60%;
+        /*
+         * CONTAINER DO POEMA
+         * O elemento <main> contém o texto e define seu estilo.
+         */
+        main {
+            /* Cor do texto: um branco suave para não ser agressivo aos olhos */
+            color: rgba(245, 245, 245, 0.95);
+            
+            /* Alinhamento do texto ajustado para a esquerda, como solicitado */
+            text-align: left;
+            
+            /* Sombra de texto sutil para destacar as palavras do fundo */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+            
+            /* Adiciona um preenchimento para que o texto não toque as bordas da tela */
+            padding: 2rem;
+
+            /* Define uma largura máxima para manter a legibilidade em telas grandes */
+            max-width: 600px;
+            box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+        }
+
+        /*
+         * ESTILO DO POEMA
+         * Ajustes finos na tipografia para um impacto poético.
+         */
+        .poema p {
+            /* Tamanho da fonte diminuído, como solicitado */
+            font-size: 1.5rem; 
+            line-height: 1.7; /* Espaçamento entre linhas para melhor leitura */
+            font-weight: 400; /* Peso da fonte regular */
+            margin: 0;
+        }
+
+        /* Estilo para as estrofes seguintes, criando uma pausa visual */
+        .poema p + p {
+            margin-top: 2.5rem;
+        }
+
+        /* Media query para ajustar o layout em telas menores (celulares) */
+        @media (max-width: 600px) {
+            body {
+                /* Alinha o bloco de texto à esquerda em telas de celular */
+                justify-content: flex-start;
+                /* Aplica um zoom de 25% na imagem de fundo, aumentando seu tamanho para 125% */
+                background-size: 125%;
             }
-            .text-blurrer {
-                /* Em telemóveis, o desfoque continua a ocultar o texto original */
-                 backdrop-filter: blur(5px);
-                -webkit-backdrop-filter: blur(5px);
+            main {
+                /* Ajusta o preenchimento para manter o texto próximo à borda esquerda */
+                padding: 2rem 1rem;
+            }
+            .poema p {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-4 sm:p-6 md:p-8">
-    <div class="max-w-7xl mx-auto">
-        
-        <header class="text-center mb-8">
-            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white">Cores Melhoradas & Poema Ajustado</h1>
-            <p class="mt-2 text-lg text-gray-600 dark:text-gray-300">Comparação com o poema como texto ajustável para diferentes ecrãs.</p>
-        </header>
+<body>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            <!-- Imagem Original -->
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-                <div class="p-4">
-                    <h2 class="text-xl font-semibold text-center text-gray-700 dark:text-gray-200">Original</h2>
-                </div>
-                <div class="p-2 bg-gray-200 dark:bg-gray-700">
-                    <img src="https://storage.googleapis.com/gemini-prod-us-central1-838965769744/uploaded/image_9dcd5e.jpg-89f54c22-67e5-4a47-b2be-134d2988c337" 
-                         alt="Mulher em Paris com a Torre Eiffel ao fundo, com um poema sobreposto. Cores originais." 
-                         class="w-full h-auto rounded-lg">
-                </div>
-            </div>
-
-            <!-- Imagem Melhorada com Poema Ajustável -->
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-                <div class="p-4">
-                    <h2 class="text-xl font-semibold text-center text-indigo-600 dark:text-indigo-400">Poema Ajustável</h2>
-                </div>
-                 <div class="p-2 bg-gray-200 dark:bg-gray-700">
-                    <div class="image-container rounded-lg overflow-hidden">
-                        <!-- A imagem principal -->
-                        <img src="https://storage.googleapis.com/gemini-prod-us-central1-838965769744/uploaded/image_9dcd5e.jpg-89f54c22-67e5-4a47-b2be-134d2988c337" 
-                             alt="Mulher em Paris com a Torre Eiffel ao fundo." 
-                             class="w-full h-auto filter-enhanced"
-                             aria-hidden="true">
-                        
-                        <!-- Este div desfoca o texto original incorporado na imagem -->
-                        <div class="text-blurrer"></div>
-
-                        <!-- O novo texto do poema, que agora pode ser movido -->
-                        <div class="poem-overlay">Sob o céu de cinza e espera,
-a cidade se cala em mim.
-A torre, um traço de ferro,
-vigia o tempo que há de vir.
-
-E na quietude deste espaço,
-uma semente de luz floresce.
-O cinza é só um abraço
-antes que a alma se aquece.
-
-Um só suspiro, que o ar desfaz,
-e o mundo inteiro se refaz.
-Nesta quietude, a força vem
-para ir à luta, e mais além.</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="mt-8 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
-            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">O que foi alterado?</h3>
-            <p class="mt-2 text-gray-600 dark:text-gray-300">
-                Atendi ao seu pedido! Como o poema original fazia parte da própria imagem, não era possível movê-lo diretamente. Para resolver isso, implementei uma solução criativa:
+    <!-- 
+      O elemento <main> serve como o container central para o poema, 
+      permitindo um controle fácil de alinhamento e estilo.
+    -->
+    <main>
+        <div class="poema">
+            <p>
+                Sob o céu de cinza e espera,<br>
+                a cidade se cala em mim.<br>
+                A torre, um traço de ferro,<br>
+                vigia o tempo que há de vir.
             </p>
-            <ul class="mt-4 space-y-2 list-disc list-inside text-gray-600 dark:text-gray-300">
-                <li><strong>Ocultação do Texto Original:</strong> Adicionei um filtro de desfoque (<code class="bg-gray-200 dark:bg-gray-700 rounded px-2 py-1 text-sm font-mono">backdrop-filter: blur()</code>) sobre a área do texto original na imagem para o esconder.</li>
-                <li><strong>Poema como Texto Real:</strong> Coloquei o poema como um elemento de texto HTML, o que permite que seja manipulado.</li>
-                <li><strong>Design Responsivo para Telemóveis:</strong> Utilizando uma Media Query (<code class="bg-gray-200 dark:bg-gray-700 rounded px-2 py-1 text-sm font-mono">@media (max-width: 768px)</code>), o poema agora é movido para a margem esquerda em ecrãs de telemóveis, como solicitou.</li>
-                 <li><strong>Manutenção no Computador:</strong> Em ecrãs maiores, como os de computador, o poema continua posicionado à direita para manter a estética original.</li>
-            </ul>
-            <p class="mt-4 text-gray-600 dark:text-gray-300">
-                Desta forma, a apresentação do poema adapta-se ao dispositivo, garantindo uma boa experiência de visualização em qualquer lugar, sem que o texto original interfira.
+            <p>
+                E na quietude deste espaço,<br>
+                uma semente de luz floresce.<br>
+                O cinza é só um abraço<br>
+                antes que a alma se aquece.
+            </p>
+            <p>
+                Um só suspiro, que o ar desfaz,<br>
+                e o mundo inteiro se refaz.<br>
+                Nesta quietude, a força vem<br>
+                para ir à luta, e mais além.
             </p>
         </div>
+    </main>
 
-    </div>
 </body>
 </html>
