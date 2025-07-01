@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflexo em Paris</title>
+    
+    <!-- Importação de fontes do Google Fonts para um estilo elegante -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /*
+         * ESTILOS GERAIS E PLANO DE FUNDO
+         * Aqui definimos a base para a experiência imersiva.
+         * O corpo (body) ocupa toda a tela e aplica a imagem de fundo
+         * com uma sobreposição de gradiente para garantir a legibilidade do texto.
+         */
+        html {
+            height: 100%;
+        }
+
+        body {
+            /* Essencial para o layout de tela cheia */
+            margin: 0;
+            height: 100%;
+            
+            /* * A imagem de fundo é aplicada com um gradiente linear escuro por cima.
+             * Isso cria a atmosfera melancólica e garante que o texto claro seja legível.
+             * A imagem é a 'WORK.jpg' que você forneceu.
+             */
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.45)), 
+                url('WORK.jpg');
+
+            /* Propriedades para garantir que a imagem cubra a tela inteira, 
+               esteja centralizada e permaneça fixa durante a rolagem. */
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+
+            /* * Usamos Flexbox para centralizar perfeitamente o conteúdo poético
+             * na vertical e na horizontal.
+             */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            /* Definição da fonte principal para o poema */
+            font-family: 'EB Garamond', 'Garamond', serif;
+        }
+
+        /*
+         * CONTAINER DO POEMA
+         * O elemento <main> contém o texto e define seu estilo.
+         */
+        main {
+            /* Cor do texto: um branco suave para não ser agressivo aos olhos */
+            color: rgba(245, 245, 245, 0.95);
+            
+            /* Alinhamento central para o poema */
+            text-align: center;
+            
+            /* Sombra de texto sutil para destacar as palavras do fundo */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+            
+            /* Adiciona um preenchimento para que o texto não toque as bordas da tela */
+            padding: 2rem;
+
+            /* Define uma largura máxima para manter a legibilidade em telas grandes */
+            max-width: 600px;
+        }
+
+        /*
+         * ESTILO DO POEMA
+         * Ajustes finos na tipografia para um impacto poético.
+         */
+        .poema p {
+            font-size: 1.5rem; /* Tamanho de fonte legível e impactante */
+            line-height: 1.6; /* Espaçamento entre linhas para melhor leitura */
+            font-weight: 400; /* Peso da fonte regular */
+            margin: 0;
+        }
+
+        /* Estilo para a segunda estrofe, criando uma pausa visual */
+        .poema p + p {
+            margin-top: 2rem;
+        }
+
+        /* Media query para ajustar o tamanho da fonte em telas menores (celulares) */
+        @media (max-width: 600px) {
+            .poema p {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+      O elemento <main> serve como o container central para o poema, 
+      permitindo um controle fácil de alinhamento e estilo.
+    -->
+    <main>
+        <div class="poema">
+            <p>
+                Sob o céu de cinza e espera,<br>
+                a cidade se cala em mim.<br>
+                A torre, um traço de ferro,<br>
+                vigia o tempo que há de vir.
+            </p>
+            <p>
+                E na quietude deste espaço,<br>
+                uma semente de luz floresce.<br>
+                O cinza é só um abraço<br>
+                antes que a alma se aquece.
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>
