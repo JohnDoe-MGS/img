@@ -29,11 +29,11 @@
             min-height: 100vh;
             
             /*
-             * A imagem de fundo é aplicada com um gradiente linear mais suave.
-             * Isso dá mais destaque à imagem, como solicitado, mantendo a legibilidade.
+             * A imagem de fundo é aplicada com um gradiente linear ainda mais sutil.
+             * Isso aumenta o contraste e dá mais destaque à imagem, como solicitado.
              */
             background: 
-                linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.35)), 
+                linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.25)), 
                 url('WORK.jpg');
 
             /*
@@ -72,7 +72,7 @@
             text-align: left;
             
             /* Sombra de texto sutil para destacar as palavras do fundo */
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
             
             /* Adiciona um preenchimento para que o texto não toque as bordas da tela */
             padding: 2rem;
@@ -86,8 +86,8 @@
          * Ajustes finos na tipografia para um impacto poético.
          */
         .poema p {
-            /* Tamanho da fonte aumentado para maior destaque */
-            font-size: 1.8rem; 
+            /* Tamanho da fonte diminuído, como solicitado */
+            font-size: 1.5rem; 
             line-height: 1.7; /* Espaçamento entre linhas para melhor leitura */
             font-weight: 400; /* Peso da fonte regular */
             margin: 0;
@@ -101,7 +101,7 @@
         /* Media query para ajustar o tamanho da fonte em telas menores (celulares) */
         @media (max-width: 600px) {
             .poema p {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -130,7 +130,7 @@
                 Um só suspiro, que o ar desfaz,<br>
                 e o mundo inteiro se refaz.<br>
                 Nesta quietude, a força vem<br>
-                para ir à luta, e ir mais além.
+                para ir à luta, e mais além.
             </p>
         </div>
     </main>
